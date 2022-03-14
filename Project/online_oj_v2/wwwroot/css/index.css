@@ -1,0 +1,83 @@
+.header {
+  position: relative;
+  height: 450px;
+  /* background-color: pink; */
+  background: url(./images/01.png) no-repeat;
+}
+.logo h1 {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #fff;
+  font-size: 28px;
+}
+.header .header-title {
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  width: 400px;
+  height: 250px;
+  color: #fff;
+  text-align: center;
+  /* background-color: pink; */
+  transform: translateX(-50%);
+}
+.title-box {
+  margin-top: 30px;
+}
+.title-box div:nth-child(1) {
+  font-size: 20px;
+  font-weight: 400;
+}
+.title-box div:nth-child(2) {
+  padding: 10px 0 30px 0;
+  font-size: 20px;
+  font-weight: 300;
+}
+.btn1 {
+  width: 130px;
+  height: 40px;
+  border-radius: 55px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+}
+.btn1:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.container-in {
+  position: relative;
+  width: 900px;
+  /* background-color: pink; */
+  margin-left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+}
+.container-title {
+  /* position: absolute; */
+  float: left;
+}
+.table {
+  margin-top: 100px;
+}
+
+.footer {
+  height: 160px;
+  background-color: #f5f5f5;
+  padding-top: 30px;
+}
+.mod_copyright {
+  text-align: center;
+  padding-top: 20px;
+}
+.mod_copyright .links {
+  margin-bottom: 15px;
+}
+.mod_copyright .links a {
+  margin: 0 3px;
+}
+.mod_copyright .copyright {
+  line-height: 20px;
+}

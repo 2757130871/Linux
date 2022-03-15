@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题目</title>
+    <!-- {{id}} -->
+    <link rel="stylesheet" href="../css/base2.css">
+    <link rel="stylesheet" href="../css/question.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>我的 OJ</h1>
+            </div>
+        </div>
+        <div class="f">
+            <h3>题目描述</h3>
+            <div class="title">
+                <p>{{id}}.{{name}}<i>level.{{star}}</i></p>
+            </div>
+            <div class="content">
+                <hr />
+                <pre>{{desc}}</pre>
+            </div>
+
+        </div>
+
+
+
+        <div class="m"></div>
+
+        <div class="r">
+            <form action="/Compile/{{id}}" method="post">
+
+                <label for="" class="code_title">Code:</label>
+                <!-- <div class="code-content">  -->
+                <input type="submit" value="Submit" class="btn" />
+                <!-- <pre name="code" class="ace_editor" style="min-height: 400px"> -->
+                <textarea name="code" cols="70" rows="30"> {{header}} </textarea>
+                <!-- </pre> -->
+                <!-- </div> --> class="ace_text-input"
+                <!-- <label for="" class="sub">提交: </label> -->
+
+            </form>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ext-language_tools.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="../css/sd.js"></script>
+</body>
+
+</body>
+
+</html>

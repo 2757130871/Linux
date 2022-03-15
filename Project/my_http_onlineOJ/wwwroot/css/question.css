@@ -1,0 +1,76 @@
+.header {
+  height: 60px;
+  background-color: #3b0035;
+}
+.logo {
+  color: #fff;
+  line-height: 60px;
+  margin-left: 20px;
+}
+.f {
+  position: relative;
+  float: left;
+  padding-left: 35px;
+}
+.f h3 {
+  position: absolute;
+  top: 20px;
+  left: 65px;
+  font-size: 22px;
+}
+.f .title {
+  position: absolute;
+  top: 50px;
+  left: 65px;
+  padding-top: 20px;
+}
+.f .title p {
+  font-size: 16px;
+}
+.f .title p i {
+  font-size: 14px;
+  padding-left: 30px;
+}
+.f .content {
+  padding-top: 100px;
+  font-size: 14px;
+}
+.f .content hr {
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.m {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 100%;
+  background-color: #f9f9f9;
+}
+.r {
+  position: relative;
+  float: right;
+  /* padding: 100px 50px 0 0; */
+}
+.ace_editor {
+  width: 650px;
+  height: 500px;
+  margin-top: 120px;
+  transform: translateX(-50px);
+}
+.code_title {
+  position: absolute;
+  top: 20px;
+  left: -55px;
+  font-size: 22px;
+}
+.btn {
+  /* margin-top: 20px; */
+  position: absolute;
+  top: 70px;
+  left: 500px;
+  width: 100px;
+  height: 30px;
+  background-color: #007aff;
+  color: #fff;
+}

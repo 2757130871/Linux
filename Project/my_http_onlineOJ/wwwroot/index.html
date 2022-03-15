@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>所有题目</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <!-- <link rel="stylesheet" href="./base.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!-- 循环 -->
+    <!-- {{#question}}
+    <div class="aaa">
+        <a href="/question/{{id}}">{{id}} &nbsp; {{name}} &nbsp; {{star}}</a>
+    </div>
+    {{/question}} -->
+
+    <div class="header">
+        <div class="logo">
+          <h1>我的OJ</h1>
+        </div>
+        <div class="header-title">
+          <div class="title-box">
+            <div>
+              <h1>我的OJ</h1>
+            </div>
+            <div>
+              <p>基于 C++ 搭建的 OJ 平台</p>
+            </div>
+            <div>
+              <button class="btn1">搭建思路</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="container-in">
+          <div class="container-title">
+            <h3>题目列表</h3>
+          </div>
+          <div class="container-table">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>题目</th>
+                  <th>难度</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#question}}
+                <tr>
+                  <td><a href="/question/{{id}}">{{id}}</a></td>
+                  <td><a href="/question/{{id}}">{{name}}</a></td>
+                  <td><a href="/question/{{id}}">{{star}}</a></td>
+                </tr>
+                {{/question}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+  
+      <footer class="footer">
+        <div>
+          <div class="mod_copyright">
+            <!-- <div class="links">
+              <a href="#">关于我们</a> | <a href="#">联系我们</a> |
+              <a href="#">联系客服</a> | <a href="#">商家入驻</a> |
+              <a href="#">营销中心</a> | <a href="#">友情链接</a> |
+              <a href="#">销售联盟</a> | <a href="#">品优购社区</a> |
+              <a href="#">English Site</a> | <a href="#">Contect U</a>
+            </div> -->
+            <div class="copyright">
+              <!-- 地址:北京市昌平区建材城西路金燕龙办公楼一层邮编:100096电话:400-618-400日传真:010-8293510日邮箱:
+              zhanghj+itcast.cn -->
+              <br />chenxinrong
+            </div>
+          </div>
+        </div>
+      </footer>
+
+</body>
+
+</html>

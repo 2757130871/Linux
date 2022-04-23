@@ -2,9 +2,7 @@
 
 #include "CallBack.hpp"
 
-#define BACKLOG 4
-//读取缓冲区大小
-#define BUF_SIZE 4
+#include "TcpServer.hpp"
 
 //使用EPOLLET模型 和 ONESHOT
 int main(int argc, char *argv[])
@@ -18,11 +16,10 @@ int main(int argc, char *argv[])
     //防止服务器被SIGPIPE信号终止
     signal(SIGPIPE, SIG_IGN);
 
-    //经典三联
+    //
     int port = atoi(argv[1]);
-    int lsock = Socket();
-    Bind(lsock, port);
-    Listen(lsock, BACKLOG);
+    TcpServer *tcp_server = TcpServer::GetInstance(port);
+    int lsock = tcp_server->GetLsock();
 
     //创建eoll模型
     int epfd = epoll_create(1);
@@ -44,7 +41,7 @@ int main(int argc, char *argv[])
             LOG(FATAL) << "epoll_wait Error !" << endl;
             continue;
         }
-        
+
         for (int i = 0; i < nready; i++)
         {
             CallBack *call_back = static_cast<CallBack *>(evs[i].data.ptr);

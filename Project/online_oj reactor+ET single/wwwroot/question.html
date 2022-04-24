@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题目</title>
+    <!-- {{id}} -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ext-language_tools.js" type="text/javascript"
+        charset="utf-8"></script>
+
+    <link rel="stylesheet" href="../css/base2.css">
+    <link rel="stylesheet" href="../css/question.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">
+                <h1>我的 OJ</h1>
+            </div>
+        </div>
+        <div class="f">
+            <h3>题目描述</h3>
+            <div class="title">
+                <p>{{id}}.{{name}}<i>level.{{star}}</i></p>
+            </div>
+            <div class="content">
+                <hr />
+                <pre>{{desc}}</pre>
+            </div>
+
+        </div>
+
+
+
+        <div class="m"></div>
+
+        <div class="r">
+            <form action="/Compile/{{id}}" method="post">
+
+                <label for="" class="code_title">Code:</label>
+                <!-- <div class="code-content">  -->
+                <input type="submit" value="Submit" class="btn" />
+
+                <textarea name="code" cols="70" rows="30"> {{header}} </textarea>
+
+        <!-- <pre id="cd" class="ace_editor" style="min-height:200px;width:500px;">
+                <textarea name="code" class="ace_text-input">
+                {{header}} 
+            </textarea>
+        </pre> -->
+
+                <script>
+                    //初始化对象
+                    editor = ace.edit("cd");
+                    //设置风格和语⾔（更多风格和语⾔，请到github上相应⽬录查看）
+                    theme = "clouds"
+                    language = "c++"
+                    editor.setTheme("ace/theme/" + theme);
+                    editor.session.setMode("ace/mode/" + language);
+                    //字体⼤⼩
+                    editor.setFontSize(18);
+                    //设置只读（true时只读，⽤于展⽰代码）
+                    editor.setReadOnly(false);
+                    //⾃动换⾏,设置为off关闭
+                    editor.setOption("wrap", "free")
+                    //启⽤提⽰菜单
+                    ace.require("ace/ext/language_tools");
+                    editor.setOptions({
+                        enableBasicAutocompletion: true,
+                        enableSnippets: true,
+                        enableLiveAutocompletion: true
+                    });
+                </script>
+
+            </form>
+        </div>
+    </div>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ace.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.6/ext-language_tools.js" type="text/javascript"
+        charset="utf-8"></script> -->
+    <script src="../css/sd.js"></script>
+</body>
+
+</body>
+
+</html>

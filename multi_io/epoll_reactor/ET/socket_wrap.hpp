@@ -1,4 +1,4 @@
-
+#pragma once
 #include <iostream>
 
 #include <sys/select.h>
@@ -80,14 +80,20 @@ void Connect(int lsock, int port, const char *serv_ip)
     }
 }
 
-
-void SetNonBlock(int fd)
+bool SetNonBlock(int fd)
 {
     int fl = fcntl(fd, F_GETFL);
     if (fl < 0)
+    {
         std::cout << "fcntl error" << endl;
+        return false;
+    }
 
     int ret = fcntl(fd, F_SETFL, fl | O_NONBLOCK);
     if (ret < 0)
+    {
         std::cout << "fcntl error" << endl;
+        return false;
+    }
+    return true;
 }

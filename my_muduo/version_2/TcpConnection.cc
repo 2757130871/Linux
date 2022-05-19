@@ -139,7 +139,8 @@ void TcpConnection::HandleClose()
 {
     LOG(ERROR) << "TcpConnection::HandleClose: fd " << channel_->Get_Fd() << " state: " << state_ << std::endl;
     SetState(kDisConnected);
-    channel_->DisableAll();
+
+    channel_->DisableAll(); //将Channel从此Loop对应的Poller中移除
 
     TcpConnectionPtr conn(shared_from_this());
 
@@ -147,7 +148,8 @@ void TcpConnection::HandleClose()
     if (connectionCallback_)
         connectionCallback_(conn);
     //一般用户使用muduo库只需要注册OnMessage和OnConnection
-    //商业项目需要更严谨 需要设置 closeCallback_
+
+    //此cb绑定到TCPServer::RemoveConnection
     if (closeCallback_)
         closeCallback_(conn);
 }
@@ -207,16 +209,17 @@ void TcpConnection::SendInLoop(const void *data, size_t len)
         return;
     }
 
-    //第一次发送数据  此Channel不可写or
+    //第一次发送数据
     if (!channel_->IsWriting() && outputBuffer_.ReadableBytes() == 0)
     {
+        //向sockfd写数据 --
         nwrote = ::write(channel_->Get_Fd(), data, len);
         if (nwrote >= 0)
         {
             remaining = len - nwrote;
             if (remaining == 0 && writeCompleteCallback_)
             {
-                //数据一次性发送完毕 无需继续给Channel设置EPOLLOUT事件
+                //如果数据一次性发送完毕 无需继续给Channel设置EPOLLOUT事件
                 loop_->QueueInLoop(
                     std::bind(&TcpConnection::writeCompleteCallback_, shared_from_this()));
             }
@@ -249,7 +252,7 @@ void TcpConnection::SendInLoop(const void *data, size_t len)
             loop_->QueueInLoop(std::bind(highWaterMarkCallback_, shared_from_this(), oldLen + remaining));
         }
 
-        //将未写完的数据写入缓冲区
+        //将未写完的数据存储在应用层的写缓冲区中 等待下次EPOLLOUT事件响应再继续send
         outputBuffer_.Append((char *)data + nwrote, remaining);
         if (!channel_->IsWriting())
         {
@@ -264,7 +267,7 @@ void TcpConnection::ConnectEstablished()
 {
     SetState(kConnected); //设置state为已连接
 
-    //强/弱智能指针配合使用,监听此Connection状态 防止此对象以销毁还在调用cb
+    //强/弱智能指针配合使用,监测此Connection状态 防止Connection已被销毁却还在调用还在调用cb
     channel_->Tie(shared_from_this());
 
     channel_->EnableReading(); //往Epoll模型上注册读事件 存进Poller

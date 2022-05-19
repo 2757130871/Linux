@@ -138,16 +138,15 @@ void TcpConnection::HandleWrite()
 void TcpConnection::HandleClose()
 {
     LOG(ERROR) << "TcpConnection::HandleClose: fd " << channel_->Get_Fd() << " state: " << state_ << std::endl;
-    SetState(kDisConnected);
 
+    SetState(kDisConnected);
     channel_->DisableAll(); //将Channel从此Loop对应的Poller中移除
 
     TcpConnectionPtr conn(shared_from_this());
 
-    //执行关闭连接的回调
+    //执行用户设置的OnConnection
     if (connectionCallback_)
         connectionCallback_(conn);
-    //一般用户使用muduo库只需要注册OnMessage和OnConnection
 
     //此cb绑定到TCPServer::RemoveConnection
     if (closeCallback_)

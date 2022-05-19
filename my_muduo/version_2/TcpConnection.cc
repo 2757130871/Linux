@@ -280,14 +280,16 @@ void TcpConnection::ConnectEstablished()
 //连接销毁时调用
 void TcpConnection::ConnectDestroyed()
 {
-    if (state_ == kConnected)
-    {
-        SetState(kDisConnected);
+    // 源码中有以下代码 但此代码块并不会进入
+    // state_ 成员在TcpConnection::HandleClose中已经被设置为了 kDisConnected
+    // if (state_ == kConnected)
+    // {
+    //     SetState(kDisConnected);
 
-        //注销此channel关注的所有事件
-        channel_->DisableAll();
-        connectionCallback_(shared_from_this());
-    }
+    //     //注销此channel关注的所有事件
+    //     channel_->DisableAll();
+    //     connectionCallback_(shared_from_this());
+    // }
     //将Channel从Poller中移除
     channel_->Remove();
 }

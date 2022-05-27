@@ -13,7 +13,7 @@
 #include "oj_view.hpp"
 #include "Compile.hpp"
 
-//获取GET 或者 POST传递过来的参数 (GET 环境变量传参) (POST 匿名管道传参)
+//获取GET 或者 POST传递过来的参数 (GET 环境变量传参) (POST 匿名管道传参 pipe)
 bool GetQueryString(std::string &query_string)
 {
     bool result = false;
